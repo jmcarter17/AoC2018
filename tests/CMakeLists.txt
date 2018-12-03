@@ -6,8 +6,6 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories(../solvers)
 set(Main main.cpp)
 set(Sources day1.test.cpp)
-#set(Headers day1.puzzle1.h)
-
 
 add_subdirectory(Vendor/Catch2)
 

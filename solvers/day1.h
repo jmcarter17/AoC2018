@@ -1,5 +1,5 @@
-#ifndef AOC2018_DAY1_PUZZLE1_H
-#define AOC2018_DAY1_PUZZLE1_H
+#ifndef AOC2018_DAY1_H
+#define AOC2018_DAY1_H
 
 #include <vector>
 
@@ -13,4 +13,4 @@ int repeatedFrequency(std::vector<int> &v);
 
 } // namespace day1
 
-#endif //AOC2018_DAY1_PUZZLE1_H
+#endif //AOC2018_DAY1_H

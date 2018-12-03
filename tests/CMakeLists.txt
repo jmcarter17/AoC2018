@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 include_directories(../solvers)
 set(Main main.cpp)
-set(Sources day1.test.cpp)
+set(Sources day1.test.cpp day2.test.cpp)
 
 add_subdirectory(Vendor/Catch2)
 

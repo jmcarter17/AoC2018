@@ -1,6 +1,6 @@
 #include "iostream"
-#include "solvers/day1.puzzle1.h"
+#include "solvers/day1.h"
 
 int main(){
-    std::cout << day1::puzzle1::solve() << '\n';
+    std::cout << day1::solve() << '\n';
 }

@@ -8,7 +8,7 @@
 namespace day1{
 
 void parseInput(std::vector<int> &v) {
-    std::ifstream file("../input/input-1-1.txt", std::ios::in);
+    std::ifstream file("../input/input-1.txt", std::ios::in);
     assert(file.is_open());
     std::string line;
 

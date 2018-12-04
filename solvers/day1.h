@@ -5,7 +5,7 @@
 
 namespace day1{
 
-int solve();
+void solve();
 int sum(std::vector<int>& v);
 void parseInput(std::vector<int> &v);
 int repeatedFrequency(std::vector<int> &v);

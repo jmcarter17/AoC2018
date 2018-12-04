@@ -14,4 +14,8 @@ TEST_CASE("Day2"){
         REQUIRE(day2::counts("ababab") == std::pair{false, true});
     }
 
+    SECTION("Puzzle2"){
+        REQUIRE(day2::diffIndices("abcde", "axcye") == std::vector<size_t>{1,3});
+        REQUIRE(day2::diffIndices("fghij", "fguij") == std::vector<size_t>{2});
+    }
 }

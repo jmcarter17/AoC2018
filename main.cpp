@@ -1,6 +1,8 @@
 #include "iostream"
 #include "solvers/day1.h"
+#include "solvers/day2.h"
 
 int main(){
-    std::cout << day1::solve() << '\n';
+    day1::solve();
+    day2::solve();
 }

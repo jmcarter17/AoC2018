@@ -6,7 +6,9 @@
 
 namespace day2 {
 
-std::pair<bool, bool> counts(std::string_view sv);// { return {false, false};};
+void solve();
+std::pair<bool, bool> counts(std::string_view sv);
+std::vector<size_t> diffIndices(std::string_view sv1, std::string_view sv2);
 
 } // namespace day2
 

@@ -28,14 +28,12 @@ int sum(std::vector<int>& v) {
 }
 
 
-int solve() {
+void solve() {
     std::vector<int> v;
 
     parseInput(v);
     std::cout << "Day1 - Puzzle 1: Resulting Frequency : " << sum(v) << '\n';
     std::cout << "Day1 - Puzzle 2: Repeated Frequency : " << repeatedFrequency(v) << '\n';
-
-    return 0;
 }
 
 int repeatedFrequency(std::vector<int>& v){

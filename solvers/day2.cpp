@@ -61,34 +61,26 @@ void solve() {
         if (has3) ++threes;
     }
 
-    std::cout << "Number of code with 2 letters repeated : " << twos << '\n';
-    std::cout << "Number of code with 3 letters repeated : " << threes << '\n';
-
-    std::cout << "CheckSum (twos times threes) : " << twos * threes << '\n';
+    std::cout << "Day2 - CheckSum (twos times threes) : " << twos * threes << '\n';
 
     std::vector<size_t> indices;
     auto itResult = vecString.end();
 
     for (auto it = vecString.begin(); it != vecString.end(); ++it){
-        bool stop = false;
         for (auto it2 = next(it); it2 != vecString.end(); ++it2){
             indices = diffIndices(*it, *it2);
             if (indices.size() == 1)
             {
                 itResult = it;
-                stop = true;
-                break;
+                it = std::prev(vecString.end());
+                it2 = std::prev(vecString.end());
             }
-            if (stop)
-                break;
         }
-        if (stop)
-            break;
     }
 
     std::string s = *itResult;
     s.erase(indices.front(),1);
-    std::cout << "ID is : " << s << '\n';
+    std::cout << "Day2 - ID is : " << s << '\n';
 }
 
 } // namespace day2

@@ -2,6 +2,7 @@
 #include "solvers/day1.h"
 #include "solvers/day2.h"
 #include "solvers/day3.h"
+#include "solvers/day4.h"
 #include <chrono>
 
 using namespace std::chrono;
@@ -26,4 +27,6 @@ int main(){
     outputDuration(timeCallVoid(day1::solve));
     outputDuration(timeCallVoid(day2::solve));
     outputDuration(timeCallVoid(day3::solve));
+    outputDuration(timeCallVoid(day4::solve));
+
 }

@@ -3,8 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <set>
-#include <boost/algorithm/string.hpp> //split.hpp>
-#include <algorithm>
+#include <boost/algorithm/string.hpp>
 
 
 namespace day3{

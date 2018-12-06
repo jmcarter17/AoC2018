@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iostream>
 #include <set>
+#include <boost/algorithm/string.hpp> //split.hpp>
+#include <algorithm>
 
 
 namespace day3{
@@ -10,22 +12,19 @@ namespace day3{
 //"#123 @ 3,2: 5x4"
 std::map<std::pair<int, int>, int> getMapSquares(std::string s) {
 
+    namespace algo = boost::algorithm;
+
+    s.erase(0,1); // remove begining #
+    std::vector<std::string> tokens;
+    algo::split(tokens, s, algo::is_any_of("@,:x "), algo::token_compress_on);
+
+    auto index = std::stoi(tokens[0]);
+    auto col = std::stoi(tokens[1]);
+    auto row = std::stoi(tokens[2]);
+    auto numCols = std::stoi(tokens[3]);
+    auto numRows = std::stoi(tokens[4]);
+
     std::map<std::pair<int, int>, int> map;
-    auto pos = s.find(' ');
-    auto index = std::stoi(s.substr(1,pos-1));
-    s.erase(0,pos+1);
-    pos = s.find(" ");
-    auto pos2 = s.find(',');
-    auto col = std::stoi(s.substr(pos+1,pos2 - pos - 1));
-    s.erase(0,pos2+1);
-    pos = s.find(':');
-    auto row = std::stoi(s.substr(0,pos));
-    pos2 = s.find(' ');
-    s.erase(0,pos2+1);
-    pos = s.find('x');
-    auto numCols = std::stoi(s.substr(0,pos));
-    s.erase(0,pos+1);
-    auto numRows = std::stoi(s);
 
     for (int i = col; i < numCols + col; i++) {
         for (int j = row; j < numRows + row; j++)

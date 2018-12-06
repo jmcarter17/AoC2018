@@ -2,6 +2,8 @@
 #include "day4.h"
 #include <string>
 #include <map>
+//#include <utility>
+#include <fstream>
 
 TEST_CASE("Day4") {
     SECTION("Puzzle1") {
@@ -19,7 +21,7 @@ TEST_CASE("Day4") {
 
             res = day4::parseline("[1518-05-08 00:02] Guard #2719 begins shift");
             CHECK(res[0] == "1518-05-08 00:02");
-            CHECK(res[1] == "2719");
+            CHECK(res[1] == "#2719");
             sortedMap[res[0]] = res[1];
 
             SECTION("Sort Time") {
@@ -30,7 +32,35 @@ TEST_CASE("Day4") {
             }
         }
 
+        SECTION("Hours Asleep"){
+            std::ifstream file("../../input/test-input-4.txt", std::ios::in);
+            std::string line;
 
+            while (std::getline(file, line)) {
+                auto parsedLine = day4::parseline(line);
+                sortedMap[parsedLine[0]] = parsedLine[1];
+            }
 
+            auto hoursAsleep = day4::getHoursOfSleep(sortedMap);
+
+            SECTION("Strategy 1") {
+                auto goodGuard = day4::findGuardMostAsleep(hoursAsleep);
+                auto goodMinute = std::max_element(hoursAsleep[goodGuard].begin(), hoursAsleep[goodGuard].end(),
+                                                   [](const std::pair<int, int> &p1, const std::pair<int, int> &p2) {
+                                                       return p1.second < p2.second;
+                                                   })->first;
+
+                CHECK(goodGuard == "#10");
+                CHECK(goodMinute == 24);
+            }
+
+            SECTION("Strategy 2") {
+                auto goodGuard = day4::findGuardConsistentAsleep(hoursAsleep);
+
+                CHECK(goodGuard.first == "#99");
+                CHECK(goodGuard.second == 45);
+            }
+
+        }
     }
 }

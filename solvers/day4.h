@@ -8,7 +8,9 @@
 namespace day4{
     std::vector<std::string> parseline(std::string s);
     int getMinuteFromKey(std::string);
-    std::string findGuardMostAsleep(std::map<std::string, std::array<int,60>>& mapGuards);
+    std::string findGuardMostAsleep(std::map<std::string, std::map<int, int>>& mapGuards);
+    std::pair<std::string, int> findGuardConsistentAsleep(std::map<std::string, std::map<int, int>>& mapGuards);
+    std::map<std::string, std::map<int, int>> getHoursOfSleep(std::map<std::string, std::string>& sortedInfo);
 
     void solve();
 }

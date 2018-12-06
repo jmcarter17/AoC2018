@@ -6,15 +6,16 @@
 
 using namespace std::chrono;
 
-template<typename F>
-auto timeCallVoid(F f){
+template<typename F, typename ...Args>
+auto timeCallVoid(F f, Args ... args){
 
     auto pre = high_resolution_clock::now();
-    f();
+    f(std::forward<Args>(args)...);
     auto post = high_resolution_clock::now();
 
     return post - pre;
 };
+
 
 template<typename T>
 void outputDuration(T d) {

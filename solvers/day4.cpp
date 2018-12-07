@@ -49,17 +49,19 @@ std::string findGuardMostAsleep(std::map<std::string, std::map<int, int>>& mapGu
 
 std::pair<std::string, int> findGuardConsistentAsleep(std::map<std::string, std::map<int, int>>& mapGuards){
     auto most = 0;
+    auto minute = 0;
     std::string result;
     for(auto& [key, val] : mapGuards) {
-        auto currentMost = std::max_element(val.begin(), val.end(),
+        auto current = std::max_element(val.begin(), val.end(),
                                            [](const std::pair<int, int>& p1, const std::pair<int, int>& p2) { return p1.second < p2.second;}
-        )->first;
-        if (currentMost > most){
-            most = currentMost;
+        );
+        if (current->second > most){
+            most = current->second;
+            minute = current->first;
             result = key;
         }
     }
-    return {result, most};
+    return {result, minute};
 };
 
 //"1518-05-08 00:02"

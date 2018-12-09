@@ -4,6 +4,7 @@
 #include "solvers/day3.h"
 #include "solvers/day4.h"
 #include "solvers/day5.h"
+#include "solvers/day7.h"
 #include <chrono>
 
 using namespace std::chrono;
@@ -30,5 +31,7 @@ int main(){
     outputDuration(timeCallVoid(day3::solve));
     outputDuration(timeCallVoid(day4::solve));
     outputDuration(timeCallVoid(day5::solve));
+    std::cout << duration_cast<microseconds>(timeCallVoid(day7::solve)).count() << "us (Duration for day 7)\n";
+//    outputDuration(timeCallVoid(day7::solve));
 
 }

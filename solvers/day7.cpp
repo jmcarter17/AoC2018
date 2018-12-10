@@ -76,7 +76,6 @@ std::pair<std::string, int> getStepOrderAndTime(std::map<char, std::vector<char>
         while (remainingHelpers > 0 and nextChar != '-') {
             info.erase(nextChar);
             processing[nextChar] = timeForChar(nextChar);
-            s.push_back(nextChar);
             --remainingHelpers;
             nextChar = findNextChar(info);
         }
@@ -86,8 +85,9 @@ std::pair<std::string, int> getStepOrderAndTime(std::map<char, std::vector<char>
                                        return p1.second < p2.second;
                                    });
 
-        removeChar(info, (*it).first);
-        auto timeToRemove = (*it).second;
+        removeChar(info, it->first);
+        s.push_back(it->first);
+        auto timeToRemove = it->second;
         totalTime += timeToRemove;
         processing.erase(it);
         for (auto& pair : processing){

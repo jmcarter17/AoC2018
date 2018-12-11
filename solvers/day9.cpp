@@ -1,28 +1,28 @@
 #include "day9.h"
 #include <iostream>
 #include <numeric>
+#include <list>
 
 
 namespace day9{
 
 
-std::map<int, std::vector<int>> scores(int numPlayers, int lastMarbleValue){
-    std::map<int, std::vector<int>> scores;
-    std::vector<int> game;
-    game.reserve(static_cast<unsigned>(lastMarbleValue));
+std::map<integer, integer> scores(integer numPlayers, integer lastMarbleValue){
+    std::map<integer, integer> scores;
+    std::list<integer> game;
     game.push_back(0);
 
-    int currentPlayer = 1;
+    integer currentPlayer = 1;
     auto currentMarble = game.begin();
-    for (auto i = 1; i <= lastMarbleValue; ++i){
+    for (integer i = 1; i <= lastMarbleValue; ++i){
         if (i % 23 == 0){
-            scores[currentPlayer].push_back(i);
-            for (int i = 0; i < 6; ++i) {
+            scores[currentPlayer] += i;
+            for (int j = 0; j < 6; ++j) {
                 currentMarble--;
                 if (currentMarble == game.begin())
                     currentMarble = game.end();
             }
-            scores[currentPlayer].push_back(*(--currentMarble));
+            scores[currentPlayer] += (*(--currentMarble));
             currentMarble = game.erase(currentMarble);
         }
         else{
@@ -31,7 +31,7 @@ std::map<int, std::vector<int>> scores(int numPlayers, int lastMarbleValue){
                 currentMarble = game.begin();
             }
 
-            game.insert(++currentMarble, i);
+            currentMarble = game.insert(++currentMarble, i);
 
         }
 
@@ -43,12 +43,11 @@ std::map<int, std::vector<int>> scores(int numPlayers, int lastMarbleValue){
     return scores;
 }
 
-int getLargestScore(std::map<int, std::vector<int>>& scores) {
-    int largestScore = 0;
+integer getLargestScore(std::map<integer, integer>& scores) {
+    integer largestScore = 0;
     for (auto& [key, val] : scores){
-        auto currentScore = std::accumulate(val.begin(), val.end(), 0);
-        if (currentScore > largestScore)
-            largestScore = currentScore;
+        if (val > largestScore)
+            largestScore = val;
     }
 
     return largestScore;
@@ -62,10 +61,10 @@ void solve(){
 
     std::cout << "Day 9 - Puzzle 1 : " << largest << '\n';
 
-//    gameScores = scores(463, 7178700);
-//    largest = getLargestScore(gameScores);
-//
-//    std::cout << "Day 9 - Puzzle 2 : " << largest << '\n';
+    gameScores = scores(463, 7178700);
+    largest = getLargestScore(gameScores);
+
+    std::cout << "Day 9 - Puzzle 2 : " << largest << '\n';
 }
 
 }

@@ -6,9 +6,11 @@
 
 namespace day9{
 
-std::map<int, std::vector<int>> scores(int numPlayers, int lastMarbleValue);
+using integer = unsigned int;
 
-int getLargestScore(std::map<int, std::vector<int>>& scores);
+std::map<integer, integer> scores(integer numPlayers, integer lastMarbleValue);
+
+integer getLargestScore(std::map<integer, integer>& scores);
 
 void solve();
 

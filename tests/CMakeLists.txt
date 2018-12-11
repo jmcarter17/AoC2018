@@ -11,6 +11,7 @@ set(Sources
         day3.test.cpp
         day4.test.cpp
         day5.test.cpp
+        day6.test.cpp
         day7.test.cpp
         day8.test.cpp
         day9.test.cpp

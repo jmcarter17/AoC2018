@@ -13,11 +13,7 @@ void parseInput(std::vector<int> &v) {
     std::string line;
 
     while (std::getline(file, line)) {
-        char c = line.front();
-        line.erase(0, 1);
         int val = std::stoi(line);
-        if (c == '-')
-            val = -val;
 
         v.push_back(val);
     }

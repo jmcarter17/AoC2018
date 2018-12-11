@@ -3,10 +3,14 @@
 
 
 TEST_CASE("Day9"){
+
+    CHECK(sizeof(int) == 4);
+    CHECK(sizeof(long) == 8);
+    CHECK(sizeof(long long) == 8);
     SECTION("Puzzle1"){
         auto scores = day9::scores(9, 25);
 
-        CHECK(scores[5] == std::vector{23, 9});
+        CHECK(scores[5] == 32);
         CHECK(day9::getLargestScore(scores) == 32);
 
         scores = day9::scores(10, 1618);
@@ -23,7 +27,6 @@ TEST_CASE("Day9"){
 
         scores = day9::scores(30, 5807);
         CHECK(day9::getLargestScore(scores) == 37305);
-
     }
 }
 

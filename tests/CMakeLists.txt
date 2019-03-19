@@ -15,6 +15,8 @@ set(Sources
         day7.test.cpp
         day8.test.cpp
         day9.test.cpp
+        day11.test.cpp
+        day12.test.cpp
 )
 
 add_subdirectory(Vendor/Catch2)

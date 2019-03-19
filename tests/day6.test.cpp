@@ -25,7 +25,7 @@ TEST_CASE("Day6"){
         CHECK(*gridPoints.begin() == day6::Point{1,1});
         CHECK(*--gridPoints.end() == day6::Point{8,9});
 
-        auto grid = day6::getGrid(gridPoints);
+        auto [regionSize, grid] = day6::getGrid(gridPoints, 32);
 
         auto p = (*grid.begin()).first;
         size_t max = 0;

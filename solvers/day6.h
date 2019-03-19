@@ -34,7 +34,7 @@ namespace day6{
 
     std::set<Point> getGridPointsFromFile(std::string filename);
     Point parseline(std::string line);
-    std::map<Point, std::vector<Point>> getGrid(const std::set<Point>& points);
+    std::pair<int, std::map<Point, std::vector<Point>>> getGrid(const std::set<Point>& points, int maxDistance);
 
     void solve();
 

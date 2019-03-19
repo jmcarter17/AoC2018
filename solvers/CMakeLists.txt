@@ -14,6 +14,8 @@ set(Sources
         day7.cpp
         day8.cpp
         day9.cpp
+        day11.cpp
+        day12.cpp
 )
 
 set(Headers
@@ -26,6 +28,8 @@ set(Headers
         day7.h
         day8.h
         day9.h
+        day11.h
+        day12.h
 )
 
 add_library(Solvers ${Sources} ${Headers})

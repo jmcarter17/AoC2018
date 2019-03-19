@@ -59,12 +59,12 @@ void solve(){
     auto gameScores = scores(463, 71787);
     auto largest = getLargestScore(gameScores);
 
-    std::cout << "Day 9 - Puzzle 1 : " << largest << '\n';
+    std::cout << "Day9 - Puzzle 1 : " << largest << '\n';
 
     gameScores = scores(463, 7178700);
     largest = getLargestScore(gameScores);
 
-    std::cout << "Day 9 - Puzzle 2 : " << largest << '\n';
+    std::cout << "Day9 - Puzzle 2 : " << largest << '\n';
 }
 
 }

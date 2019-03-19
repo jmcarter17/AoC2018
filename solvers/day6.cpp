@@ -2,6 +2,7 @@
 #include "day6.h"
 #include <fstream>
 #include <iostream>
+#include <numeric>
 
 namespace day6{
 
@@ -27,7 +28,7 @@ std::set<Point> getGridPointsFromFile(std::string filename){
     return gridPoints;
 }
 
-std::map<Point, std::vector<Point>> getGrid(const std::set<Point>& points){
+std::pair<int, std::map<Point, std::vector<Point>>> getGrid(const std::set<Point>& points, int maxDistance){
     std::map<Point, std::vector<Point>> grid;
     int xmin = (*points.begin()).x;
     int xmax = (*--points.end()).x;
@@ -42,19 +43,21 @@ std::map<Point, std::vector<Point>> getGrid(const std::set<Point>& points){
             ymin = p.y;
     }
 
-
-
-//    Point bottomLeft = *points.begin();
-//    Point topRight = *--points.end();
+    int sizeRegion = 0;
 
     for (int i = xmin; i <= xmax; ++i) {
         for (int j = ymin; j <= ymax; ++j){
             Point current{i,j};
             std::map<int, std::vector<Point>> distances;
+            int sum = 0;
             for (auto& p : points){
                 auto d = p.distance(current);
                 distances[d].push_back(p);
+                sum += d;
             }
+            if (sum < maxDistance)
+                sizeRegion++;
+
             if ((*distances.begin()).second.size() > 1)
                 grid[{-1,-1}].push_back(current);
             else
@@ -73,12 +76,12 @@ std::map<Point, std::vector<Point>> getGrid(const std::set<Point>& points){
         }
     }
 
-    return grid;
+    return {sizeRegion, grid};
 };
 
 void solve(){
     auto gridPoints = day6::getGridPointsFromFile("../input/input-6.txt");
-    auto grid = day6::getGrid(gridPoints);
+    auto [regionSize, grid] = day6::getGrid(gridPoints, 10000);
 
     auto p = (*grid.begin()).first;
     size_t max = 0;
@@ -89,8 +92,9 @@ void solve(){
         }
     }
 
-    std::cout << "Day 6 - Point : [" << p.x << "," << p.y << "]\n";
-    std::cout << "Day 6 - Puzzle 1 : " << max << '\n';
+    std::cout << "Day6 - Point : [" << p.x << "," << p.y << "]\n";
+    std::cout << "Day6 - Puzzle 1 : " << max << '\n';
+    std::cout << "Day6 - Puzzle 2 : Region size : " << regionSize << '\n';
 }
 
 

@@ -3,7 +3,7 @@
 #include <numeric>
 #include <string>
 #include <iostream>
-#include <set>
+#include <unordered_set>
 
 namespace day1{
 
@@ -33,7 +33,7 @@ void solve() {
 }
 
 int repeatedFrequency(std::vector<int>& v){
-    std::set<int> partialSums;
+    std::unordered_set<int> partialSums;
     int partialSum = 0;
     partialSums.insert(partialSum);
     bool good = true;
